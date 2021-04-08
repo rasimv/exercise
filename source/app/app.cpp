@@ -1,6 +1,7 @@
 #include <iostream>
 #include <alg/gcd.h>
 #include <alg/rotate.h>
+#include <vector>
 
 template <typename I>
 void print(I b, I e, bool n = true)
@@ -17,12 +18,17 @@ int main()
 
     std::cout << std::endl;
 
-    int u[] = {1, 2, 3, 4, 5, 6};
+    std::vector<int> u = {1, 2, 3, 4, 5, 6};
     print(std::begin(u), std::end(u));
 
-    rotate(std::begin(u), std::end(u), 4);
+    rotate1(std::begin(u), std::end(u), 11);
     print(std::begin(u), std::end(u));
-    rotate(std::begin(u), std::end(u), -11);
+    rotate1(std::begin(u), std::end(u), -11);
+    print(std::begin(u), std::end(u));
+
+    rotate2(std::begin(u), std::end(u), 5);
+    print(std::begin(u), std::end(u));
+    rotate2(std::begin(u), std::end(u), -7);
     print(std::begin(u), std::end(u));
 
     return 0;
