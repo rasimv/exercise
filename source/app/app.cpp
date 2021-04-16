@@ -31,5 +31,14 @@ int main()
     rotate2(std::begin(u), std::end(u), -7);
     print(std::begin(u), std::end(u));
 
+    rotate3(std::begin(u), std::begin(u) + 1, std::end(u));
+    print(std::begin(u), std::end(u));
+    rotate3(std::begin(u), std::begin(u) + 3, std::end(u));
+    print(std::begin(u), std::end(u));
+    rotate3(std::begin(u), std::begin(u) + 4, std::end(u));
+    print(std::begin(u), std::end(u));
+    rotate3(std::begin(u), std::begin(u) + 5, std::end(u));
+    print(std::begin(u), std::end(u));
+
     return 0;
 }

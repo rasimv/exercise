@@ -60,3 +60,29 @@ void rotate2(T b, T e, decltype(e - b) n)
         }
     }
 }
+
+// https://en.cppreference.com/w/cpp/algorithm/rotate
+// m - the element that should appear at the beginning of the rotated range
+// Return value: iterator to the new location of the element pointed by b. Equal to b + (e - m)
+template <typename T>
+T rotate3(T b, T m, T e)
+{
+    if (b == m) return e;
+    if (m == e) return b;
+
+    auto r(e), j(m);
+    do
+    {
+        std::iter_swap(b, j);
+        ++b; ++j;
+        if (b == m) m = j;
+        if (j == e)
+        {
+            j = m;
+            if (r == e) r = b;
+        }
+    }
+    while (j != e);
+
+    return r;
+}
