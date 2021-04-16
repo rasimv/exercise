@@ -2,7 +2,9 @@
 #include <alg/gcd.h>
 #include <alg/rotate.h>
 #include <alg/bound.h>
+#include <alg/qs.h>
 #include <vector>
+#include <cassert>
 
 template <typename I>
 void print(I b, I e, bool n = true)
@@ -10,6 +12,13 @@ void print(I b, I e, bool n = true)
     const auto l = std::distance(b, e);
     for (auto i(b); i != e; i++) std::cout << (i == b ? "" : " | ") << *i;
     if (n) std::cout << std::endl;
+}
+
+std::vector<int> random()
+{
+    std::vector<int> v(rand() % 1000);
+    for (auto &q: v) q = rand();
+    return v;
 }
 
 int main()
@@ -47,6 +56,7 @@ int main()
     rotate3(std::begin(u), std::begin(u) + 5, std::end(u));
     print(std::begin(u), std::end(u));
 
+    //==========================================================================
     std::cout << std::endl;
 
     std::vector<int> v = { 1, 1, 3, 6, 6, 8, 11, 16, 16 };
@@ -58,6 +68,19 @@ int main()
         std::cout << q << " | " << f - std::begin(v) << " | ";
         if (f == std::end(v)) std::cout << "-"; else std::cout << *f;
         std::cout << std::endl;
+    }
+
+    //==========================================================================
+    std::cout << std::endl;
+
+    while (true)
+    {
+        v = random();
+        auto w(v);
+        std::cout << v.size() << std::endl;
+        std::sort(std::begin(v), std::end(v));
+        qs(std::begin(w), std::end(w));
+        assert(v == w);
     }
 
     return 0;
