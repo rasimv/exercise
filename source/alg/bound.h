@@ -16,3 +16,21 @@ I lower_bound(I b, I e, T v)
     }
     return e;
 }
+
+template <typename I, typename T>
+I lower_bound2(I b, I e, T v)
+{
+    decltype(std::distance(b, e)) c = std::distance(b, e), s;
+    for (auto m{b}; c > 0; m = b)
+    {
+        s = c / 2;
+        std::advance(m, s);
+        if (*m < v)
+        {
+            b = ++m;
+            c -= s + 1;
+        }
+        else c = s;
+    }
+    return b;
+}
