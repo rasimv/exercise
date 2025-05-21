@@ -21,7 +21,7 @@ template <typename I, typename T>
 I lower_bound2(I b, I e, T v)
 {
     decltype(std::distance(b, e)) c = std::distance(b, e), s;
-    for (auto m{b}; c > 0; m = b)
+    for (auto m{b}; c > 0; )
     {
         s = c / 2;
         std::advance(m, s);
@@ -30,7 +30,11 @@ I lower_bound2(I b, I e, T v)
             b = ++m;
             c -= s + 1;
         }
-        else c = s;
+        else
+        {
+            m = b;
+            c = s;
+        }
     }
     return b;
 }
